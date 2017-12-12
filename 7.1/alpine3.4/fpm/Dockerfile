@@ -1,5 +1,4 @@
 FROM php:7.1-fpm-alpine
-RUN echo "http://mirrors.aliyun.com/alpine/v3.4/main/" > /etc/apk/repositories
 RUN apk update \
     && apk update && apk add --no-cache libmcrypt libmcrypt-dev icu-dev \
     freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
@@ -11,5 +10,4 @@ RUN apk update \
     --with-jpeg-dir=/usr/include/ \
 
 && docker-php-ext-install gd  \
-&& apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev icu-dev \
-&& apk info
+&& apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev icu-dev
