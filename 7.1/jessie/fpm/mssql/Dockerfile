@@ -19,4 +19,7 @@ RUN apt-get update \
 
 RUN docker-php-ext-install mbstring pdo pdo_mysql \
     && pecl install sqlsrv pdo_sqlsrv xdebug \
-    && docker-php-ext-enable sqlsrv pdo_sqlsrv
+    && docker-php-ext-enable sqlsrv pdo_sqlsrv \
+    && curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer \
+    && apt-get install openssh-client
