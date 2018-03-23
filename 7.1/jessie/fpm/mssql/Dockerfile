@@ -22,4 +22,4 @@ RUN docker-php-ext-install mbstring pdo pdo_mysql \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
-    && apt-get install openssh-client
+    && apt-get install -y openssh-client
