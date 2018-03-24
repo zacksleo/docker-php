@@ -17,7 +17,7 @@ RUN apt-get update \
         msodbcsql \
         unixodbc-dev
 
-RUN docker-php-ext-install mbstring pdo pdo_mysql \
+RUN docker-php-ext-install mcrypt mbstring pdo_mysql zip \
     && pecl install sqlsrv pdo_sqlsrv xdebug \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv \
     && curl -sS https://getcomposer.org/installer | php \
