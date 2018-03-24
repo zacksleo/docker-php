@@ -21,7 +21,7 @@ RUN docker-php-ext-install mbstring \
 
 
 # Install dependence for yii2
-RUN apt-get install -y mysql-client curl libmcrypt-dev openssh-client zlib1g-dev \
+RUN apt-get install -y mysql-client curl libmcrypt-dev openssh-client zlib1g-dev git \
 && docker-php-ext-install mcrypt pdo_mysql zip \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
