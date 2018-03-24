@@ -13,13 +13,15 @@ RUN apt-get update \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && apt-get update \
-    && apt-get -y --no-install-recommends install \
-        msodbcsql \
-        unixodbc-dev
+    && apt-get -y --no-install-recommends install msodbcsql  unixodbc-dev
 
-RUN docker-php-ext-install mcrypt mbstring pdo_mysql zip \
-    && pecl install sqlsrv pdo_sqlsrv xdebug \
-    && docker-php-ext-enable sqlsrv pdo_sqlsrv \
+RUN docker-php-ext-install mbstring \
+    && pecl install sqlsrv pdo_sqlsrv \
+    && docker-php-ext-enable sqlsrv pdo_sqlsrv
+
+
+# Install dependence for yii2
+RUN apt-get install -y mysql-client curl libmcrypt libmcrypt-dev openssh-client \
+RUN docker-php-ext-install mcrypt pdo_mysql zip
     && curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer \
-    && apt-get install -y openssh-client
+    && mv composer.phar /usr/local/bin/composer
