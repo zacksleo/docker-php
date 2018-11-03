@@ -1,6 +1,6 @@
 FROM zacksleo/php:laravel
 RUN apk update \
-    && apk add --no-cache git openssh-client rsync autoconf g++ \
+    && apk add --no-cache git openssh-client rsync autoconf g++ make \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && docker-php-ext-install zip \
@@ -9,4 +9,4 @@ RUN apk update \
     && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-RUN apk del --no-cache g++ autoconf
+RUN apk del --no-cache g++ autoconf make
