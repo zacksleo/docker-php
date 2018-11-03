@@ -5,5 +5,5 @@ RUN apk update && apk add --no-cache openssl-dev autoconf g++ make \
 && ./configure --enable-openssl \
 && make && make install \
 && cd .. rm -f swoole.tgz && rm -rf swoole-* \
-&& ls && docker-php-ext-enable swoole && php --ri swoole \
-&& apk del --no-cache openssl-dev g++ autoconf make
+&& ls && docker-php-ext-enable swoole
+RUN apk del --no-cache autoconf make && php --ri swoole
