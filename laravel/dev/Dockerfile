@@ -1,4 +1,4 @@
-FROM zacksleo/php:laravel
+FROM zacksleo/php:laravel-swoole
 RUN apk update \
     && apk add --no-cache openssh-client curl git autoconf make g++ zlib-dev rsync \
     && docker-php-source extract \
