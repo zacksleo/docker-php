@@ -1,10 +1,12 @@
 FROM zacksleo/php:laravel-swoole
 RUN apk update \
-    && apk add --no-cache openssh-client curl git autoconf make g++ zlib-dev rsync libzip \
+    && apk add --no-cache openssh-client curl git autoconf make g++ zlib-dev rsync \
     && docker-php-source extract \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && docker-php-source delete \
+    && apk add --no-cache --virtual .build-deps libzip-dev \
+    && docker-php-ext-configure zip --with-libzip \
     && docker-php-ext-install zip \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
