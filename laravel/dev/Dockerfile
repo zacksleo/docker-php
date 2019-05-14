@@ -1,6 +1,6 @@
 FROM zacksleo/php:laravel-swoole
 RUN apk update \
-    && apk add --no-cache openssh-client curl git autoconf make g++ zlib-dev rsync \
+    && apk add --no-cache openssh-client curl git autoconf make g++ zlib-dev rsync libzip \
     && docker-php-source extract \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
