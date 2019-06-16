@@ -42,7 +42,5 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd
 
 # prepare for using supervisor
-apt-get install -y --no-install-recommends supervisor
+RUN apt-get install -y --no-install-recommends supervisor && apt-get install -y --no-install-recommends cron
 
-# setup cron and logrotate
-apt-get install -y --no-install-recommends cron
